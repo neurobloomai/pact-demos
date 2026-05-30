@@ -19,7 +19,7 @@ app.get("/run", (req, res) => {
   res.flushHeaders();
 
   const env = { ...process.env, PYTHONUNBUFFERED: "1" };
-  const child = spawn("python3", [
+  const child = spawn("/Users/akanuganti/.pyenv/versions/3.9.13/bin/python", [
     path.join(__dirname, "demo.py"),
   ], { env, cwd: path.join(__dirname, "../../..") });
 
