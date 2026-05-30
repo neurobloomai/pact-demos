@@ -61,8 +61,9 @@ app.get("/seam/snapshot",  (req, res) => {
 // Run a demo and stream its stdout back
 app.get("/run/:demo", (req, res) => {
   const demos = {
-    orchestrator:  path.join(__dirname, "../orchestrator/demo.py"),
-    four_primitive: path.join(__dirname, "../four_primitive/demo.py"),
+    orchestrator:    path.join(__dirname, "../orchestrator/demo.py"),
+    orchestrator_v2: path.join(__dirname, "../orchestrator_v2/demo.py"),
+    four_primitive:  path.join(__dirname, "../four_primitive/demo.py"),
   };
   const script = demos[req.params.demo];
   if (!script) return res.status(404).end();
@@ -381,6 +382,8 @@ header h1 em { color: var(--purple); font-style: normal; }
 
   <button class="pill pill-green" id="btn-orch"
           onclick="runDemo('orchestrator')">▶ Orchestrator</button>
+  <button class="pill" style="color:#d2a8ff;border-color:#d2a8ff" id="btn-v2"
+          onclick="runDemo('orchestrator_v2')">▶ v2 · Async</button>
   <button class="pill pill-blue" id="btn-four"
           onclick="runDemo('four_primitive')">▶ Four-Primitive</button>
   <button class="pill" style="color:var(--muted);border-color:var(--border)"
@@ -803,9 +806,8 @@ function connectSSE() {
 // ── Demo runner ───────────────────────────────────────────────────────────────
 
 function runDemo(name) {
-  const btn = name === "orchestrator"
-    ? document.getElementById("btn-orch")
-    : document.getElementById("btn-four");
+  const btnMap = { orchestrator: "btn-orch", orchestrator_v2: "btn-v2", four_primitive: "btn-four" };
+  const btn = document.getElementById(btnMap[name] || "btn-orch");
   btn.disabled = true;
   document.getElementById("status-text").textContent = "running " + name + "…";
 
