@@ -1,0 +1,12 @@
+{
+  "name": "pact-demos",
+  "version": "1.0.0",
+  "description": "Browser demo servers for PACT-AX and PACT-HX",
+  "scripts": {
+    "four-primitive": "node demos/four_primitive/server.js",
+    "orchestrator":   "node demos/orchestrator/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}

@@ -1,0 +1,13 @@
+# Core libraries — install from local clones
+-e ../pact-ax
+-e ../pact-hx
+
+# Runtime deps (pulled transitively, listed for clarity)
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+starlette>=0.27.0
+httpx>=0.24.0
+pydantic>=2.0.0
+anthropic>=0.40.0
+sqlalchemy>=2.0.0
+python-dotenv>=1.0.0
