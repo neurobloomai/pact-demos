@@ -61,9 +61,11 @@ app.get("/seam/snapshot",  (req, res) => {
 // Run a demo and stream its stdout back
 app.get("/run/:demo", (req, res) => {
   const demos = {
-    orchestrator:    path.join(__dirname, "../orchestrator/demo.py"),
-    orchestrator_v2: path.join(__dirname, "../orchestrator_v2/demo.py"),
-    four_primitive:  path.join(__dirname, "../four_primitive/demo.py"),
+    orchestrator:        path.join(__dirname, "../orchestrator/demo.py"),
+    orchestrator_v2:     path.join(__dirname, "../orchestrator_v2/demo.py"),
+    four_primitive:      path.join(__dirname, "../four_primitive/demo.py"),
+    capability_routing:  path.join(__dirname, "../capability_routing/demo.py"),
+    orchestrate_rest:    path.join(__dirname, "../orchestrate_rest/demo.py"),
   };
   const script = demos[req.params.demo];
   if (!script) return res.status(404).end();
@@ -386,6 +388,10 @@ header h1 em { color: var(--purple); font-style: normal; }
           onclick="runDemo('orchestrator_v2')">▶ v2 · Async</button>
   <button class="pill pill-blue" id="btn-four"
           onclick="runDemo('four_primitive')">▶ Four-Primitive</button>
+  <button class="pill" style="color:#f0883e;border-color:#f0883e" id="btn-cap"
+          onclick="runDemo('capability_routing')">▶ Capability Router</button>
+  <button class="pill" style="color:#3fb950;border-color:#3fb950" id="btn-orch-rest"
+          onclick="runDemo('orchestrate_rest')">▶ Orchestrate REST</button>
   <button class="pill" style="color:var(--muted);border-color:var(--border)"
           onclick="clearAll()">↺ Clear</button>
 
@@ -806,7 +812,7 @@ function connectSSE() {
 // ── Demo runner ───────────────────────────────────────────────────────────────
 
 function runDemo(name) {
-  const btnMap = { orchestrator: "btn-orch", orchestrator_v2: "btn-v2", four_primitive: "btn-four" };
+  const btnMap = { orchestrator: "btn-orch", orchestrator_v2: "btn-v2", four_primitive: "btn-four", capability_routing: "btn-cap", orchestrate_rest: "btn-orch-rest" };
   const btn = document.getElementById(btnMap[name] || "btn-orch");
   btn.disabled = true;
   document.getElementById("status-text").textContent = "running " + name + "…";
