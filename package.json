@@ -7,7 +7,8 @@
     "orchestrator":        "node demos/orchestrator/server.js",
     "seam-observer":       "node demos/seam_observer/server.js",
     "capability-routing":  "python demos/capability_routing/demo.py",
-    "orchestrate-rest":    "python demos/orchestrate_rest/demo.py"
+    "orchestrate-rest":    "python demos/orchestrate_rest/demo.py",
+    "contract-review":     "python demos/contract_review/demo.py"
   },
   "dependencies": {
     "express": "^4.18.0"

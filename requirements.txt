@@ -2,6 +2,9 @@
 -e ../pact-ax
 -e ../pact-hx
 
+# SDK
+pact-ax-client>=0.1.0
+
 # Runtime deps (pulled transitively, listed for clarity)
 fastapi>=0.100.0
 uvicorn[standard]>=0.23.0
