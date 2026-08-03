@@ -12,7 +12,7 @@ git clone https://github.com/neurobloomai/pact-demos
 cd pact-demos
 pip install -r requirements.txt   # pact-ax + pact-hx (editable)
 npm install                        # for browser/streaming demos
-export ANTHROPIC_API_KEY=sk-ant-... # required for live LLM calls; omit for dry-run
+export ANTHROPIC_API_KEY=sk-ant-... # optional — PACT-AX is model-agnostic; demos run without an LLM key by design
 ```
 
 ---
